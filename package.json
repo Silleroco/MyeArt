@@ -1,0 +1,45 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@inertiajs/inertia": "^0.8.2",
+        "@inertiajs/inertia-vue3": "^0.3.5",
+        "@inertiajs/progress": "^0.2.6",
+        "@stripe/stripe-js": "^1.20.3",
+        "@tailwindcss/forms": "^0.2.1",
+        "@vue/compiler-sfc": "^3.2.20",
+        "alpinejs": "^2.7.3",
+        "autoprefixer": "^10.4.0",
+        "axios": "^0.21.4",
+        "bootstrap": "^4.6.1",
+        "jquery": "^3.5.1",
+        "laravel-mix": "^6.0.37",
+        "lodash": "^4.17.21",
+        "popper.js": "^1.16.1",
+        "postcss": "^8.3.11",
+        "postcss-import": "^14.0.1",
+        "resolve-url-loader": "^3.1.4",
+        "sass": "^1.43.4",
+        "sass-loader": "^11.1.1",
+        "tailwindcss": "^2.2.19",
+        "vue": "^3.2.20",
+        "vue-loader": "^16.8.2"
+    },
+    "dependencies": {
+        "@hennge/vue3-pagination": "^1.0.17",
+        "@vueform/slider": "^2.0.5",
+        "bootstrap-social": "^5.1.1",
+        "bootstrap-vue": "^2.21.2",
+        "moment": "^2.29.1",
+        "stripe": "^8.184.0",
+        "vue-material-design-icons": "^4.13.0"
+    }
+}
