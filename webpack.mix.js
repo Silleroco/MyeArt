@@ -14,7 +14,7 @@ const path = require('path');
 mix.js('resources/js/app.js', 'public/js').vue()
 .sass('resources/sass/app.scss', 'public/css/')
 .styles([
-        // "resources/css/bootstrap/bootstrap.css",
+         "resources/css/bootstrap/bootstrap.css",
         // "resources/css/animate.css",
         // "resources/css/font-awesome.min.css",
         // "resources/css/jquery-ui.css",
