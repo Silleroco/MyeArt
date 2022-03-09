@@ -8,12 +8,12 @@
                         <div class="menu-fullwidth">
                             <div class="logo-wrapper">
                                 <div class="logo logo-top">
-                                    <a href="/"
+                                    <inertia-link href="/"
                                         ><img
                                             src="/imagenes/Logo.png"
                                             alt="logo image"
                                             class="img-fluid"
-                                    /></a>
+                                    /></inertia-link>
                                 </div>
                             </div>
                             <div class="menu-container">
@@ -41,23 +41,25 @@
                                         >
                                             <ul class="navbar-nav">
                                                 <li>
-                                                    <inertia-link
-                                                        :href="
-                                                            route('search')
+                                                    <a
+                                                        href="
+                                                            javascript:void(0)
                                                         "
+                                                        @click="obra()"
                                                     >
                                                         Obras
-                                                    </inertia-link>
+                                                    </a>
                                                 </li>
                                                 <li>
 
-                                                    <inertia-link
-                                                        :href="
-                                                            route('artists.list')
+                                                    <a
+                                                        href="
+                                                        javascript:void(0)    
                                                         "
+                                                        @click="artistas()"
                                                     >
                                                         Artistas
-                                                    </inertia-link>
+                                                    </a>
                                                 </li>
                                                 <!-- <li>
 
@@ -217,6 +219,7 @@
 import Avatar from '@/Components/Avatar.vue'
 import CardCart from './Cart'
 import Notifications from './Notifications.vue'
+import { Inertia } from '@inertiajs/inertia'
 
 export default ({
     components: {
@@ -224,12 +227,20 @@ export default ({
         Notifications,
         Avatar
     },
-    created(){
-        console.log('notification', this.$page.props.auth)
-    },
     computed: {
         user() {
             return this.$page.props.auth.user
+        }
+    },
+    methods:{
+        obra(){ 
+            $('#bs-example-navbar-collapse-1').collapse('hide')
+            Inertia.visit(route('search'), { method: 'get' })
+            
+        },
+        artistas(){ 
+            $('#bs-example-navbar-collapse-1').collapse('hide')
+            Inertia.visit(route('artists.list'), { method: 'get' })
         }
     }
 
