@@ -37,8 +37,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '81393126824-v2sgklp0ojogddm440d6qkdmp2ni3pn5.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'http://localhost:8000/auth/google/callback',
+        'client_id' => '545533251001-pspej7ned3mshhrrbcqc96uuvlo86odj.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'https://myeart.org/auth/google/callback',
     ],
 ];
