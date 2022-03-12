@@ -17,29 +17,31 @@ class LoginWithFacebookController extends Controller
 
     public function facebookCallback()
     {
+        $user = Socialite::driver('facebook')->user();
         try {
-            $user = Socialite::driver('facebook')->user();
-
-            $finduser = User::where('facebook_id', $user->id)->first();
-
+            $finduser = User::where('email', $user->email)->first();
             if ($finduser) {
                 Auth::login($finduser);
-
-                return redirect()->intended('dashboard');
+                return Redirect::route('home');;
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
-                    'facebook_id'=> $user->id,
-                    'password' => encrypt('Test123456')
+                    'google_id'=> $user->id,
+                    'password' => Hash::make('Test123456'),
                 ]);
-
+                //Agregando Perfil
+                $profile = Profile::create([
+                    'user_id' => $newUser->id,
+                    'firstName' => $user->name,
+                ]);
+                //Asignamos el rol de comprador a todos los usuarios creados
+                $newUser->assignRole('buyer');
                 Auth::login($newUser);
-
-                return redirect()->intended('dashboard');
+                return Redirect::route('home');;
             }
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
+         } catch (Exception $e) {
+             dd($e->getMessage());
+         }
     }
 }
