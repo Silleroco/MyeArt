@@ -36,13 +36,12 @@ class LoginWithGoogleController extends Controller
                 ]);
                 //Agregando Perfil
                 $profile = Profile::create([
-                    'user_id' => $user->id,
-                    'firstName' => $user->given_name,
-                    'lastName' => $user->family_name,
+                    'user_id' => $newUser->id,
+                    'firstName' => $user->name,
                     'avatar' => $user->picture,
                 ]);
                 //Asignamos el rol de comprador a todos los usuarios creados
-                $user->assignRole('buyer');
+                $newUser->assignRole('buyer');
                 Auth::login($newUser);
                 return Redirect::route('home');;
             }
