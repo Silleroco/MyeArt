@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Exception;
 use Redirect;
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
