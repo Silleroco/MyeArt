@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Exception;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginWithGoogleController extends Controller
@@ -30,7 +31,7 @@ class LoginWithGoogleController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'google_id'=> $user->id,
-                    'password' => encrypt('Test123456')
+                    'password' => Hash::make('Test123456'),
                 ]);
                 Auth::login($newUser);
                 return redirect()->intended('dashboard');
