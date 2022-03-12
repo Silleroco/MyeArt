@@ -38,7 +38,6 @@ class LoginWithGoogleController extends Controller
                 $profile = Profile::create([
                     'user_id' => $newUser->id,
                     'firstName' => $user->name,
-                    'avatar' => $user->picture,
                 ]);
                 //Asignamos el rol de comprador a todos los usuarios creados
                 $newUser->assignRole('buyer');
