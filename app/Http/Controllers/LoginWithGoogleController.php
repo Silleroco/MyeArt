@@ -18,7 +18,7 @@ class LoginWithGoogleController extends Controller
 
     public function googleCallback()
     {
-        // try {
+         try {
             $user = Socialite::driver('google')->user();
 
             $finduser = User::where('google_id', $user->id)->first();
@@ -36,8 +36,8 @@ class LoginWithGoogleController extends Controller
                 Auth::login($newUser);
                 return redirect()->intended('dashboard');
             }
-        // } catch (Exception $e) {
-        //     dd($e->getMessage());
-        // }
+         } catch (Exception $e) {
+             dd($e->getMessage());
+         }
     }
 }
