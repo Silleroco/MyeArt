@@ -18,11 +18,10 @@ class LoginWithGoogleController extends Controller
 
     public function googleCallback()
     {
+        $user = Socialite::driver('google')->user();
+ 
          try {
-            $user = Socialite::driver('google')->user();
-
-            $finduser = User::where('google_id', $user->id)->first();
-
+            $finduser = User::where('email', $user->email)->first();
             if ($finduser) {
                 Auth::login($finduser);
                 return redirect()->intended('dashboard');
