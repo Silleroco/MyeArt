@@ -23,7 +23,7 @@ class LoginWithGoogleController extends Controller
         $user = Socialite::driver('google')->user();
  
          try {
-            $finduser = User::where('email', $user->email)->first();
+            $finduser = User::where('name', $user->name)->first();
             if ($finduser) {
                 Auth::login($finduser);
                 return Redirect::route('home');;
