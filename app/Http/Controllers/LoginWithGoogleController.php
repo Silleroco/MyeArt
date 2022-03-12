@@ -33,6 +33,15 @@ class LoginWithGoogleController extends Controller
                     'google_id'=> $user->id,
                     'password' => Hash::make('Test123456'),
                 ]);
+                //Agregando Perfil
+                $profile = Profile::create([
+                    'user_id' => $user->id,
+                    'firstName' => $user->given_name,
+                    'lastName' => $user->family_name,
+                    'avatar' => $user->picture,
+                ]);
+                //Asignamos el rol de comprador a todos los usuarios creados
+                $user->assignRole('buyer');
                 Auth::login($newUser);
                 return Redirect::route('home');;
             }
