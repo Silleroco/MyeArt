@@ -23,10 +23,10 @@ class LoginWithGoogleController extends Controller
         $user = Socialite::driver('google')->user();
  
          try {
-            $finduser = User::where('name', $user->name)->first();
+            $finduser = User::where('name', $user->name)->orWhere('email', $user->email)->first();
             if ($finduser) {
-                Auth::login($finduser);
-                return Redirect::route('home');;
+                Auth::loginUsingId($finduser->id);
+                return Redirect::route('home');
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
@@ -41,8 +41,8 @@ class LoginWithGoogleController extends Controller
                 ]);
                 //Asignamos el rol de comprador a todos los usuarios creados
                 $newUser->assignRole('buyer');
-                Auth::login($newUser);
-                return Redirect::route('home');;
+                Auth::loginUsingId($newUser->id);
+                return Redirect::route('home');
             }
          } catch (Exception $e) {
              dd($e->getMessage());
